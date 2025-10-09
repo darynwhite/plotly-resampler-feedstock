@@ -13,13 +13,13 @@ source:
   sha256: e3f9ceeb5749de9a85d39755f50711a7d6a28eb1b284da250251c8896ccc1cfd
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
-    - python
+    - python ${{ python_min }}.*
     - poetry-core
     - pip
   run:
@@ -39,6 +39,7 @@ tests:
       imports:
         - plotly_resampler
       pip_check: true
+      python_version: ${{ python_min }}.*
 
 about:
   summary: Visualizing large time series with plotly
